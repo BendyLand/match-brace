@@ -1,0 +1,19 @@
+build:
+    cargo build
+    mv target/debug/match-brace .
+
+test:
+    if [[ -f ./match-brace ]]; then
+        ./match-brace test.cpp
+    else
+        lash build
+        lash test
+    fi
+
+clean:
+    if [[ -f ./match-brace ]]; then
+        rm ./match-brace
+    else
+        echo "Binary not built."
+    fi
+    
